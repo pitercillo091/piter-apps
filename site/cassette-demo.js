@@ -112,7 +112,7 @@
     rotate.textContent = rotate.dataset.on === "true" ? "Pausar carrusel" : "Activar carrusel";
     if (rotate.dataset.on === "true") {
       timer = setInterval(() => {
-        if (!document.hidden && !deck.closest(".demo").matches(":focus-within, :hover")) show(current + 1);
+        if (!document.hidden && document.activeElement !== select && !deck.matches(":hover")) show(current + 1);
       }, 5500);
     }
   }

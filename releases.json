@@ -3,14 +3,14 @@
   "tag": "piter-music-2.0.0-r2-android-2.0.5",
   "assets": {
     "windows": {
-      "name": "PITER-MUSIC-2.0.0-R2-Radio-Windows-x64.zip",
-      "size": 132763577,
-      "sha256": "8df074ba209f635c612a1e9290809e2e936729df685f47f261e9249ae3e2ed17"
+      "name": "PITER-MUSIC-2.0.0-R2-Radio-Windows-x64-Translucido.zip",
+      "size": 110355020,
+      "sha256": "aff12b5a13bdca6b27c71ffbdcdcb32d06b9cb96ee3bae7f4af450a905e99d1e"
     },
     "android": {
-      "name": "Piter-Music-2.0.5-android-debug.apk",
-      "size": 150153425,
-      "sha256": "cc37528e50b81fc8b9bd80f02d93da3a6bf159ae06dd0dfae753798acacb1999"
+      "name": "Piter-Music-2.0.5-android-debug-Translucido.apk",
+      "size": 126768817,
+      "sha256": "f028601ed119cbfcc3dd2fd44bb4f10a5a883d8c2ad75f94503ca3836f1cfc8f"
     }
   }
 }
