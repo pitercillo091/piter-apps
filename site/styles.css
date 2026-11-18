@@ -64,3 +64,15 @@
 @media(max-width:860px){.nav{flex-wrap:wrap;gap:0}.nav .menu:not([hidden]){display:block}.nav-links{width:100%;flex-wrap:wrap;gap:13px;padding:8px 0 14px}.nav-links.is-collapsed{display:none}}
 @media(max-width:760px){.video-grid{grid-template-columns:1fr}.video-views{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.video-views{grid-template-columns:1fr}}
+
+/* Emblema completo y fotografía del origen del proyecto */
+.brand-feature{overflow:visible}
+.brand-feature-art{min-width:0;overflow:visible}
+.brand-feature-art img{width:min(100%,500px);height:auto!important;max-height:none!important;object-fit:contain!important;object-position:center!important}
+@media(max-width:760px){.brand-feature-art img{width:min(78vw,340px)}}
+.origin-credit{position:relative;left:50%;width:min(1080px,calc(100vw - 40px));transform:translateX(-50%);margin:34px 0 42px}
+.origin-credit .kicker{color:var(--accent);font-family:monospace;font-size:11px;font-weight:750;letter-spacing:.14em;margin:0 0 14px}
+.origin-credit figure{overflow:hidden;border-radius:20px;border:1px solid #ffffff22;background:#10110f;box-shadow:0 18px 50px #0008}
+.origin-credit img{width:100%;height:auto;object-fit:contain}
+.origin-credit figcaption{padding:15px 20px;color:var(--cream);font-size:16px;letter-spacing:.02em}
+@media(max-width:600px){.origin-credit{width:calc(100vw - 32px);margin-block:28px 34px}.origin-credit figure{border-radius:15px}.origin-credit figcaption{padding:13px 15px}}
