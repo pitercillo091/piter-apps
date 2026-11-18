@@ -1,4 +1,4 @@
-name = "piter-apps-comments"
+name = "piter-apps-forum"
 main = "worker.mjs"
 compatibility_date = "2026-11-18"
 
