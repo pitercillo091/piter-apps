@@ -6,7 +6,7 @@ compatibility_date = "2026-11-18"
 enabled = false
 
 [vars]
-PUBLIC_ORIGIN = "https://pitercillo091.github.io"
+PUBLIC_ORIGIN = "https://piterapps.aquiestalatuna.es"
 
 [[d1_databases]]
 binding = "COMMENTS"

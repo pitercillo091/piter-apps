@@ -23,7 +23,7 @@ El contador usa `download_count` de GitHub Releases para cada activo. Se consult
 
 ## Comentarios
 
-El sitio muestra el foro pendiente mientras falten las variables públicas `PITER_COMMENTS_ENDPOINT` y `PITER_TURNSTILE_SITEKEY`. Puedes publicar primero la web y activar el foro después.
+**Estado actual: pendiente de activar.** La web no acepta ni almacena comentarios hasta desplegar el Worker, crear la base D1 y configurar Turnstile. Hace falta una cuenta de Cloudflare y definir `PITER_COMMENTS_ENDPOINT` y `PITER_TURNSTILE_SITEKEY` como variables de Actions. El dominio debe servir por HTTPS para habilitar el formulario. IONOS solo administra el DNS; iniciar sesión allí no configura el servicio de comentarios.
 
 1. Crea una base de Cloudflare D1 y ejecuta `comments/schema.sql`.
 2. Copia `comments/wrangler.example.toml` a `comments/wrangler.toml`. Ajusta la ID de D1 y el origen público de GitHub Pages.

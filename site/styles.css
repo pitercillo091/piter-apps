@@ -29,3 +29,13 @@
 .cassette-picker{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .cassette-picker label{flex-basis:100%;font-size:.85rem}
 .cassette-picker select{flex:1;min-width:0;color:var(--cream);background:#30261b;border:1px solid #78624a;border-radius:5px;font:inherit;font-size:13px;padding:6px}
+
+
+/* Logotipo original en gran formato */
+.brand-feature{overflow:hidden;background:radial-gradient(ellipse at 23% 55%,#493a27,#1a1915 58%,#141412);border-top:1px solid #ffffff18;border-bottom:1px solid #ffffff18;padding-block:clamp(46px,7vw,100px)}
+.brand-feature-grid{display:grid;grid-template-columns:minmax(240px,.85fr) 1.15fr;align-items:center;gap:clamp(26px,6vw,90px)}
+.brand-feature-art{display:grid;place-items:center}
+.brand-feature-art img{width:min(100%,440px);filter:drop-shadow(0 25px 44px #000b);animation:arrive .9s ease both}
+.brand-feature-copy h2{font-size:clamp(43px,6.6vw,92px);margin:18px 0;line-height:.97;letter-spacing:-.075em}
+.brand-feature-copy>p:last-child{color:#c9c1b4;font-size:clamp(15px,1.5vw,20px);max-width:43ch}
+@media(max-width:760px){.brand-feature-grid{grid-template-columns:1fr;gap:20px}.brand-feature-art img{width:min(74vw,300px)}.brand-feature-copy{text-align:center}.brand-feature-copy .kicker{justify-content:center}}
