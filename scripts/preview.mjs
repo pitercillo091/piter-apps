@@ -8,7 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../site");
 const port = Number(process.env.PITER_PREVIEW_PORT || 8736);
 const types = new Map(Object.entries({
   ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
-  ".jpg": "image/jpeg", ".png": "image/png", ".ico": "image/x-icon", ".mp3": "audio/mpeg", ".wav": "audio/wav",
+  ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".ico": "image/x-icon", ".mp3": "audio/mpeg", ".wav": "audio/wav",
   ".zip": "application/zip", ".apk": "application/vnd.android.package-archive"
 }));
 
@@ -50,4 +50,4 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(port, "127.0.0.1", () => console.log("PITER MUSIC · http://127.0.0.1:" + port + "/"));
+server.listen(port, "127.0.0.1", () => console.log("PITER APPS · http://127.0.0.1:" + port + "/"));

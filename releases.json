@@ -12,5 +12,20 @@
       "size": 126768817,
       "sha256": "f028601ed119cbfcc3dd2fd44bb4f10a5a883d8c2ad75f94503ca3836f1cfc8f"
     }
+  },
+  "video": {
+    "tag": "piter-video",
+    "assets": {
+      "video-windows": {
+        "name": "PITER-VIDEO-Windows.zip",
+        "size": 113226839,
+        "sha256": "98144f097c200decf69accc0ae1058ad91235f20a7f926f15b6ca5098a6bccc6"
+      },
+      "video-android": {
+        "name": "PITER-VIDEO-Android.apk",
+        "size": 17515351,
+        "sha256": "72d7e4456161342c22ef57ace08c2e80b3c38603ab899ef0310908a51df8bbfb"
+      }
+    }
   }
 }

@@ -1,6 +1,7 @@
 /site/downloads/
 /public/
 /qa/
+/reports/
 .env*
 .dev.vars*
 .wrangler/

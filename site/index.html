@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#141412"><meta name="description" content="PITER MUSIC, el reproductor musical retro de cassette, CD, vinilo y radio para Windows y Android.">
+<meta name="theme-color" content="#141412"><meta name="description" content="PITER MUSIC, el reproductor musical retro de cassette, CD, vinilo y radio para Windows y Android. PITER VIDEO reproduce tus vídeos con televisores de tubo, VHS y Betamax.">
 <title>PITER MUSIC — Tu música. Otra vez en cinta.</title>
 <link rel="icon" href="assets/piter-music.ico"><link rel="stylesheet" href="styles.css"><script src="config.js" defer></script><script src="app.js" defer></script><script src="cassette-catalog.js" defer></script><script src="cassette-demo.js" defer></script>
 </head><body>
@@ -9,7 +9,7 @@
 <header class="top"><nav class="nav wrap" aria-label="Navegación principal">
 <a class="brand" href="#inicio"><img src="assets/piter-music.ico" alt="" width="32" height="32">PITER<span>MUSIC</span></a>
 <button class="menu" type="button" aria-controls="menu-links" aria-expanded="false" hidden>Menú <span aria-hidden="true">+</span></button>
-<div id="menu-links" class="nav-links"><a href="#reproductor">Reproductor</a><a href="#skins">Skins</a><a href="#cassettes">Cassettes</a><a href="#funciones">Funciones</a><a href="#comentarios">Comentarios</a><a class="nav-cta" href="#descargas">Descargas ↓</a></div>
+<div id="menu-links" class="nav-links"><a href="#reproductor">Reproductor</a><a href="#skins">Skins</a><a href="#cassettes">Cassettes</a><a href="#funciones">Funciones</a><a href="#piter-video">PITER VIDEO</a><a href="#comentarios">Comentarios</a><a class="nav-cta" href="#descargas">Descargas ↓</a></div>
 </nav></header>
 <main id="contenido">
 <section id="inicio" class="hero"><div class="wrap hero-grid">
@@ -66,9 +66,36 @@
 <article id="android" class="download-card"><p class="kicker">ANDROID · 2.0.5</p><h3>La música va contigo.</h3><ol><li>Descarga el APK.</li><li>Si Android lo solicita, permite la instalación desde la fuente que abre el archivo.</li><li>Instala PITER MUSIC.</li><li>Abre la app y carga canciones o carpetas.</li></ol><a class="button dark download-button" data-download="android" href="downloads/Piter-Music-2.0.5-android-debug-Translucido.apk" download>PITER MUSIC 2.0.5 para Android <span aria-hidden="true">↓</span></a><p class="file-meta">APK firmado para pruebas · 126,8 MB · Android 6.0 o posterior</p><p class="notice">Al instalar un APK fuera de Google Play, Android puede mostrar avisos de seguridad.</p><figure class="android-view"><a class="zoom" href="assets/android.jpg" data-zoom aria-label="Ampliar PITER MUSIC en Android"><img loading="lazy" src="assets/android.jpg" alt="Detalle del reproductor PITER MUSIC en Android"></a><figcaption>Reproductor en Android</figcaption></figure></article>
 </div><div class="stats"><h3>Descargas por versión</h3><dl><div><dt>Windows 2.0.0 R2</dt><dd id="count-windows">Pendiente</dd></div><div><dt>Android 2.0.5</dt><dd id="count-android">Pendiente</dd></div></dl><p id="stats-status" class="fine" role="status">Contadores pendientes de la publicación de ambos archivos en GitHub Releases.</p></div>
 </div></section>
-<section id="piter-video" class="video section"><div class="wrap video-grid"><div><p class="kicker"><i></i> PRÓXIMAMENTE</p><h2>PITER VIDEO</h2><p>Una próxima aplicación de Piter Apps.</p></div><div class="video-art" aria-hidden="true"><div class="video-screen"><div class="video-play"></div></div><div class="video-controls"><i></i><i></i><i></i></div></div></div></section>
+<section id="piter-video" class="video" aria-labelledby="piter-video-title">
+<div class="wrap section">
+  <div class="video-grid">
+    <div class="video-copy">
+      <p class="kicker"><i></i> REPRODUCTOR DE VÍDEO RETRO</p>
+      <div class="video-brand"><img src="assets/piter-video/emblema.webp" alt="" width="64" height="64" loading="lazy"><h2 id="piter-video-title">PITER VIDEO</h2></div>
+      <p>Elige un televisor de tubo y una pletina VHS o Betamax. Abre un vídeo tuyo, pulsa PLAY y maneja la reproducción desde el frontal.</p>
+      <div class="actions"><a class="button primary" href="#video-windows">Windows <span aria-hidden="true">↓</span></a><a class="button secondary" href="#video-android">Android <span aria-hidden="true">↓</span></a></div>
+      <a class="text-link" href="#inicio">Volver a PITER MUSIC <span aria-hidden="true">↑</span></a>
+    </div>
+    <figure class="hero-unit video-main"><a class="zoom" href="assets/piter-video/windows.webp" data-zoom aria-label="Ampliar la captura de Windows"><img src="assets/piter-video/windows.webp" alt="PITER VIDEO en Windows: barras de color en un Sony Trinitron sobre un reproductor VHS JVC" width="1240" height="839" loading="lazy"></a><figcaption><span>SONY TRINITRON · JVC VHS</span><span><i></i> WINDOWS</span></figcaption></figure>
+  </div>
+  <div class="video-views" aria-label="Capturas de PITER VIDEO">
+    <figure class="video-view"><a class="zoom" href="assets/piter-video/android-tv.webp" data-zoom aria-label="Ampliar la captura de Google TV"><img src="assets/piter-video/android-tv.webp" alt="Reproducción en un televisor Sharp con VHS integrado desde Google TV" width="1120" height="630" loading="lazy"></a><figcaption><h3>Google TV</h3><p>El Sharp con VHS integrado. Usa el mando para cambiar de equipo y controlar el vídeo.</p></figcaption></figure>
+    <figure class="video-view"><a class="zoom" href="assets/piter-video/nieve.webp" data-zoom aria-label="Ampliar la captura de nieve analógica"><img src="assets/piter-video/nieve.webp" alt="Nieve analógica dentro de la pantalla del televisor virtual en Android TV" width="1120" height="630" loading="lazy"></a><figcaption><h3>Señales de reposo</h3><p>Elige nieve analógica o cartas de ajuste cuando no haya un vídeo abierto.</p></figcaption></figure>
+    <figure class="video-view"><a class="zoom" href="assets/piter-video/android-movil.webp" data-zoom aria-label="Ampliar la captura de Android móvil"><img src="assets/piter-video/android-movil.webp" alt="PITER VIDEO en un móvil, con el televisor y los controles táctiles de reproducción" width="432" height="704" loading="lazy"></a><figcaption><h3>En el móvil</h3><p>Abre un vídeo de tu biblioteca o de una carpeta compartida en la red doméstica.</p></figcaption></figure>
+  </div>
+  <p class="fine video-note">Activa los sonidos de la cinta o importa tus propias listas para ver emisiones por Internet. Consulta los <a class="text-link" href="creditos.html#piter-video-creditos">créditos de las capturas</a>.</p>
+</div>
+<div class="cream downloads video-downloads"><div class="wrap section">
+  <div class="section-intro"><div><p class="kicker"><i></i> DESCARGAS · PITER VIDEO</p><h2>Elige tu pantalla.</h2></div><p>Reproduce tus vídeos en el ordenador, el móvil, la tableta o el televisor.</p></div>
+  <div class="download-grid">
+    <article id="video-windows" class="download-card"><p class="kicker">WINDOWS</p><h3>PITER VIDEO para Windows</h3><p>Windows 10 u 11 de 64 bits con .NET Framework 4.8 o posterior.</p><ol><li>Descarga y extrae el ZIP completo.</li><li>Abre <strong>PiterVideo.exe</strong> desde la carpeta extraída.</li></ol><a class="button dark download-button" data-download="video-windows" href="downloads/PITER-VIDEO-Windows.zip" download>Descargar para Windows <span aria-hidden="true">↓</span></a><p class="file-meta">ZIP portable</p></article>
+    <article id="video-android" class="download-card"><p class="kicker">ANDROID</p><h3>PITER VIDEO para Android</h3><p>Android 7 o posterior. Compatible con móvil, tableta, Android TV y Google TV.</p><ol><li>Descarga el APK y ábrelo desde tus descargas. En un televisor, puedes copiarlo y abrirlo con un gestor de archivos.</li><li>Android puede mostrar un aviso de seguridad al instalar desde una web. Si quieres continuar, permite la instalación para la aplicación que abre el APK y desactiva el permiso después.</li></ol><a class="button dark download-button" data-download="video-android" href="downloads/PITER-VIDEO-Android.apk" download>Descargar para Android <span aria-hidden="true">↓</span></a><p class="file-meta">APK de evaluación · Instalación directa</p></article>
+  </div>
+  <div class="stats"><h3>Descargas de PITER VIDEO</h3><dl><div><dt>Windows</dt><dd id="count-video-windows">Pendiente</dd></div><div><dt>Android</dt><dd id="count-video-android">Pendiente</dd></div></dl><p id="video-stats-status" class="fine" role="status">Los contadores se consultan en la web pública.</p></div>
+</div></div>
+</section>
 <section id="comentarios" class="section cream"><div class="wrap">
-<div class="section-intro"><div><p class="kicker"><i></i> COMENTARIOS</p><h2>Tu turno de hablar.</h2></div><p>Comparte qué equipo te gusta más o qué detalle te gustaría ver en PITER MUSIC.</p></div>
+<div class="section-intro"><div><p class="kicker"><i></i> COMENTARIOS</p><h2>Tu turno de hablar.</h2></div><p>Comparte qué equipo te gusta más o qué detalle te gustaría ver en PITER MUSIC o PITER VIDEO.</p></div>
 <div class="comment-grid"><form id="comments-form"><p class="fine" id="comment-privacy">Tu nombre o alias, comentario y fecha pueden mostrarse públicamente tras la moderación. Usa un alias y evita los datos personales.</p><fieldset id="comment-fields" disabled aria-describedby="comment-privacy"><label>Nombre o alias <input name="name" required minlength="2" maxlength="40" autocomplete="nickname"></label><label>Comentario <textarea name="message" required minlength="5" maxlength="600" rows="4"></textarea></label><div class="honeypot" aria-hidden="true"><label>Web <input name="website" tabindex="-1" autocomplete="off"></label></div><div id="comment-challenge"></div><button class="button dark" type="submit">Enviar a moderación</button></fieldset><p id="comment-status" class="fine" role="status">Aún no se pueden enviar comentarios. Falta desplegar el servicio Cloudflare, enlazar su base D1 y configurar la verificación Turnstile.</p></form>
 <div class="comment-feed"><h3>Comentarios publicados</h3><p id="comments-empty">El foro aún no está activo. No se almacenan comentarios hasta completar la configuración externa.</p><ol id="comments-list"></ol></div></div></div></section>
 <section id="donaciones" class="donate"><div class="wrap donate-grid"><div><h2>Apoya el proyecto.</h2><p>Si te gusta PITER MUSIC y quieres apoyar su desarrollo, puedes colaborar mediante PayPal.</p><small>brigadiespiter@hotmail.com</small></div><a class="button secondary" href="https://www.paypal.com/donate/?business=brigadiespiter%40hotmail.com&amp;currency_code=EUR" rel="noopener noreferrer">Donar con PayPal <span aria-hidden="true">↗</span></a></div></section>

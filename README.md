@@ -1,6 +1,6 @@
 # Piter Apps
 
-Web de presentación de PITER MUSIC. HTML, CSS y JavaScript sin dependencias de compilación. La carpeta `site/` contiene la vista previa con las descargas locales.
+Web de presentación de PITER MUSIC y PITER VIDEO. HTML, CSS y JavaScript sin dependencias de compilación. La carpeta `site/` contiene la vista previa con las descargas locales.
 
 ## Vista previa
 
@@ -15,17 +15,15 @@ El servidor escucha en `http://127.0.0.1:8736/`. Las copias locales de los binar
 
 ## Publicación
 
-La web se despliega en GitHub Pages. Los dos archivos de distribución se publican como activos de GitHub Releases. La tarea **Publicar Piter Apps** verifica que ambos activos son públicos, comprueba tamaño y SHA-256 y prueba el inicio de cada descarga antes de generar el sitio.
+La web se despliega en GitHub Pages. Los archivos de distribución de cada proyecto se publican en una release propia de GitHub. La tarea **Publicar Piter Apps** verifica los cuatro recursos públicos, comprueba tamaño y SHA-256 y prueba el inicio de cada descarga antes de generar el sitio.
 
-Consulta `releases.json` para ver el tag, los nombres, tamaños y huellas de los paquetes. Si cambian los paquetes aprobados o su nombre, actualiza también las instrucciones y enlaces de vista previa en `site/index.html`.
+Consulta `releases.json` para ver los tags, nombres, tamaños y huellas de los paquetes. Si cambian los paquetes aprobados o su nombre, actualiza también las instrucciones y enlaces de vista previa en `site/index.html`.
 
 El contador usa `download_count` de GitHub Releases para cada activo. Se consulta al abrir la web y muestra la hora de la consulta. Si el servicio falla, se muestra el estado sin datos. No se generan cifras locales. GitHub puede contar descargas técnicas. Las cifras reflejan descargas del activo y no instalaciones únicas.
 
 ## Comentarios
 
-**Estado: backend configurado; formulario pendiente de HTTPS válido en el dominio público.** El Worker `piter-apps-forum` está desplegado en Cloudflare, enlazado a D1 (`piter-apps-comments`) y protegido con Turnstile. Las variables de Actions `PITER_COMMENTS_ENDPOINT` y `PITER_TURNSTILE_SITEKEY` están configuradas y la publicación de Pages se completó correctamente. El endpoint GET del Worker responde con la lista aprobada vacía. El formulario de la web se mantiene bloqueado mientras `https://piterapps.aquiestalatuna.es` no tenga certificado válido; no se deben enviar comentarios desde HTTP.
-
-**Pendiente:** corregir la configuración DNS/TLS del subdominio y esperar/validar el certificado en GitHub Pages/Cloudflare. Después, volver a abrir el sitio por HTTPS y confirmar que el formulario y el desafío Turnstile aparecen habilitados. No hace falta recrear D1, el Worker ni las variables de Actions.
+**Foro compartido por PITER MUSIC y PITER VIDEO.** El Worker `piter-apps-forum` está desplegado en Cloudflare, enlazado a D1 (`piter-apps-comments`) y protegido con Turnstile. GitHub Actions toma el endpoint y la clave pública del widget de `PITER_COMMENTS_ENDPOINT` y `PITER_TURNSTILE_SITEKEY`. El formulario se habilita en `https://piterapps.aquiestalatuna.es` cuando carga Turnstile.
 
 ### Privacidad y moderación
 

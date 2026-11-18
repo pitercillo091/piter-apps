@@ -74,21 +74,22 @@
   });
 
   const onLocal = location.protocol === "file:" || ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
-  const assets = config.release?.assets;
-  if (!assets && onLocal) byId("local-state").hidden = false;
-  if (assets) {
-    for (const link of document.querySelectorAll("[data-download]")) {
-      link.href = assets[link.dataset.download].url;
-      link.removeAttribute("download");
-    }
-    loadStats();
+  if (!config.release?.assets && onLocal) byId("local-state").hidden = false;
+  const downloadAssets = { ...config.release?.assets, ...config.videoRelease?.assets };
+  for (const link of document.querySelectorAll("[data-download]")) {
+    const asset = downloadAssets[link.dataset.download];
+    if (!asset) continue;
+    link.href = asset.url;
+    link.removeAttribute("download");
   }
+  if (config.release?.assets) loadStats(config.release, "stats-status");
+  if (config.videoRelease?.assets) loadStats(config.videoRelease, "video-stats-status");
 
-  async function loadStats() {
-    const status = byId("stats-status");
+  async function loadStats({ api, assets }, statusId) {
+    const status = byId(statusId);
     status.textContent = "Consultando GitHub Releases…";
     try {
-      const response = await fetch(config.release.api, {
+      const response = await fetch(api, {
         credentials: "omit",
         headers: { Accept: "application/vnd.github+json" },
         signal: AbortSignal.timeout(8000)
