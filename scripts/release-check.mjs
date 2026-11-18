@@ -100,7 +100,7 @@ if (local) {
   const output = join(root, "public");
   await mkdir(output, { recursive: true });
   assert.ok(!(await readdir(output)).length, "public debe estar vacío antes de generar el sitio.");
-  for (const name of ["assets", "app.js", "background-music.js", "cassette-catalog.js", "cassette-demo.js", "creditos.html", "guia-windows.html", "styles.css"]) {
+  for (const name of ["assets", "analytics.js", "app.js", "background-music.js", "cassette-catalog.js", "cassette-demo.js", "creditos.html", "guia-windows.html", "styles.css"]) {
     await cp(join(site, name), join(output, name), { recursive: true });
   }
   await writeFile(join(output, "index.html"), html);

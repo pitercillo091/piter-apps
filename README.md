@@ -40,6 +40,12 @@ DELETE FROM comments WHERE id = 42;
 
 El listado público muestra los últimos 50 comentarios aprobados.
 
+### Visitas
+
+El Worker suma vistas de página en D1 por día. No guarda IP, cookies, identificadores de visitante, URL de página ni referente; por eso el dato mide vistas agregadas, no personas únicas. El contador visible ofrece el día actual, los últimos 30 días y el acumulado. Las cifras empiezan cuando se aplica la migración y se publica la nueva versión del Worker; no hay datos retroactivos.
+
+Para habilitar el contador con Wrangler autenticado, desde `comments/` aplica primero `npx wrangler d1 migrations apply piter-apps-comments --remote` y luego `npx wrangler deploy`. La web se publica después mediante la tarea original de GitHub Pages.
+
 - [GitHub Pages con un flujo personalizado](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 - [Datos de los activos de GitHub Releases](https://docs.github.com/en/rest/releases/assets)
 - [Validación de Turnstile en el servidor](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)

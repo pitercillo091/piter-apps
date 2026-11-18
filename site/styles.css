@@ -110,3 +110,4 @@ body:has(.background-player){padding-bottom:90px}
 .background-player.is-playing button{background:var(--accent);color:#251b10}
 .background-player button:disabled{opacity:.65;cursor:default}
 @media(max-width:520px){.background-player{bottom:12px;left:12px;max-width:calc(100% - 24px);gap:10px}}
+.visit-stats h2{font-size:clamp(28px,4vw,42px);margin-bottom:18px}.visit-stats dd{font-size:24px;font-weight:800}.visit-stats dl{gap:14px clamp(20px,5vw,64px)}

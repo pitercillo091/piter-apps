@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#141412"><meta name="description" content="PITER MUSIC, el reproductor musical retro de cassette, CD, vinilo y radio para Windows y Android. PITER VIDEO reproduce tus vídeos con televisores de tubo, VHS y Betamax.">
 <title>PITER MUSIC — Cada canción guarda un momento. Dale al Play.</title>
-<link rel="icon" href="assets/piter-music.ico"><link rel="stylesheet" href="styles.css?musica-primero"><script src="config.js?piter-video" defer></script><script src="app.js?piter-video" defer></script><script src="cassette-catalog.js" defer></script><script src="cassette-demo.js" defer></script><script src="background-music.js?primero" defer></script>
+<link rel="icon" href="assets/piter-music.ico"><link rel="stylesheet" href="styles.css?musica-primero"><script src="config.js?piter-video" defer></script><script src="analytics.js?visitas-1" defer></script><script src="app.js?piter-video" defer></script><script src="cassette-catalog.js" defer></script><script src="cassette-demo.js" defer></script><script src="background-music.js?primero" defer></script>
 </head><body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <aside id="background-player" class="background-player" aria-label="Música de fondo" hidden>
@@ -14,7 +14,7 @@
 <header class="top"><nav class="nav wrap" aria-label="Navegación principal">
 <a class="brand" href="#inicio"><img src="assets/piter-music.ico" alt="" width="32" height="32">PITER<span>MUSIC</span></a>
 <button class="menu" type="button" aria-controls="menu-links" aria-expanded="false" hidden>Menú <span aria-hidden="true">+</span></button>
-<div id="menu-links" class="nav-links"><a href="#reproductor">Reproductor</a><a href="#skins">Skins</a><a href="#cassettes">Cassettes</a><a href="#funciones">Funciones</a><a href="#piter-video">PITER VIDEO</a><a href="#comentarios">Comentarios</a><a class="nav-cta" href="#descargas">Descargas ↓</a></div>
+<div id="menu-links" class="nav-links"><a href="#reproductor">Reproductor</a><a href="#skins">Skins</a><a href="#cassettes">Cassettes</a><a href="#funciones">Funciones</a><a href="#piter-video">PITER VIDEO</a><a href="#visitas">Visitas</a><a href="#comentarios">Comentarios</a><a class="nav-cta" href="#descargas">Descargas ↓</a></div>
 </nav></header>
 <main id="contenido">
 <section id="inicio" class="hero"><div class="wrap hero-grid">
@@ -99,6 +99,7 @@
   <div class="stats"><h3>Descargas de PITER VIDEO</h3><dl><div><dt>Windows</dt><dd id="count-video-windows">Pendiente</dd></div><div><dt>Android</dt><dd id="count-video-android">Pendiente</dd></div></dl><p id="video-stats-status" class="fine" role="status">Los contadores se consultan en la web pública.</p></div>
 </div></div>
 </section>
+<section id="visitas" class="section cream"><div class="wrap"><div class="stats visit-stats"><h2>Visitas a la web</h2><dl><div><dt>Hoy</dt><dd id="page-views-today">—</dd></div><div><dt>Últimos 30 días</dt><dd id="page-views-last30">—</dd></div><div><dt>Total</dt><dd id="page-views-total">—</dd></div></dl><p id="page-views-status" class="fine" role="status">Consultando el contador de visitas…</p></div></div></section>
 <section id="comentarios" class="section cream"><div class="wrap">
 <div class="section-intro"><div><p class="kicker"><i></i> COMENTARIOS</p><h2>Tu turno de hablar.</h2></div><p>Comparte qué equipo te gusta más o qué detalle te gustaría ver en PITER MUSIC o PITER VIDEO.</p></div>
 <div class="comment-grid"><form id="comments-form"><p class="fine" id="comment-privacy">Tu nombre o alias, comentario y fecha pueden mostrarse públicamente tras la moderación. Usa un alias y evita los datos personales.</p><fieldset id="comment-fields" disabled aria-describedby="comment-privacy"><label>Nombre o alias <input name="name" required minlength="2" maxlength="40" autocomplete="nickname"></label><label>Comentario <textarea name="message" required minlength="5" maxlength="600" rows="4"></textarea></label><div class="honeypot" aria-hidden="true"><label>Web <input name="website" tabindex="-1" autocomplete="off"></label></div><div id="comment-challenge"></div><button class="button dark" type="submit">Enviar a moderación</button></fieldset><p id="comment-status" class="fine" role="status">Aún no se pueden enviar comentarios. Falta desplegar el servicio Cloudflare, enlazar su base D1 y configurar la verificación Turnstile.</p></form>

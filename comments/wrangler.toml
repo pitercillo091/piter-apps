@@ -12,6 +12,7 @@ PUBLIC_ORIGIN = "https://piterapps.aquiestalatuna.es"
 binding = "COMMENTS"
 database_name = "piter-apps-comments"
 database_id = "e76840f4-c4ab-4830-962b-a0a46424b941"
+migrations_dir = "migrations"
 
 [triggers]
 crons = ["*/5 * * * *"]

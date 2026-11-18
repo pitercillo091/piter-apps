@@ -1,11 +1,13 @@
 const maximumBytes = 6144;
 const cooldown = 5 * 60 * 1000;
 const siteverify = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const analyticsPath = "/analytics/view";
 
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin");
-    if (new URL(request.url).pathname !== "/comments" || (origin && origin !== env.PUBLIC_ORIGIN)) {
+    const path = new URL(request.url).pathname;
+    if ((path !== "/comments" && path !== analyticsPath) || (origin && origin !== env.PUBLIC_ORIGIN)) {
       return new Response(null, { status: 404 });
     }
     const headers = {
@@ -24,11 +26,37 @@ export default {
         } });
       }
       if (request.method === "GET") {
+        if (path !== "/comments") return json({ error: "method" }, 405);
         const { results } = await env.COMMENTS.prepare(
           "SELECT name,message,created FROM comments WHERE approved=1 ORDER BY id DESC LIMIT 50"
         ).all();
         return json({ comments: results });
       }
+      if (path === "/analytics/view") {
+        if (request.method !== "POST") return json({ error: "method" }, 405);
+        if (origin !== env.PUBLIC_ORIGIN) return json({ error: "origin" }, 403);
+        const date = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Europe/Madrid", year: "numeric", month: "2-digit", day: "2-digit"
+        }).formatToParts(new Date()).filter((part) => part.type !== "literal").map(({ type, value }) => [type, value]));
+        const day = `${date.year}-${date.month}-${date.day}`;
+        const cutoff = new Date(`${day}T12:00:00Z`);
+        cutoff.setUTCDate(cutoff.getUTCDate() - 29);
+        const day30 = cutoff.toISOString().slice(0, 10);
+        const results = await env.COMMENTS.batch([
+          env.COMMENTS.prepare(
+            "INSERT INTO page_views(day,views) VALUES(?,1) " +
+            "ON CONFLICT(day) DO UPDATE SET views=views+1"
+          ).bind(day),
+          env.COMMENTS.prepare(
+            "SELECT COALESCE(SUM(views),0) AS total, " +
+            "COALESCE(SUM(CASE WHEN day=? THEN views ELSE 0 END),0) AS today, " +
+            "COALESCE(SUM(CASE WHEN day>=? THEN views ELSE 0 END),0) AS last30 " +
+            "FROM page_views"
+          ).bind(day, day30)
+        ]);
+        return json({ recorded: true, ...results[1].results[0] }, 202);
+      }
+      if (path !== "/comments") return json({ error: "method" }, 405);
       if (request.method !== "POST") return json({ error: "method" }, 405);
       if (origin !== env.PUBLIC_ORIGIN) return json({ error: "origin" }, 403);
       if (!request.headers.get("Content-Type")?.toLowerCase().startsWith("application/json")) return json({ error: "type" }, 415);
