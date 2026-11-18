@@ -1,0 +1,17 @@
+name = "piter-apps-comments"
+main = "worker.mjs"
+compatibility_date = "2026-11-18"
+
+[observability]
+enabled = false
+
+[vars]
+PUBLIC_ORIGIN = "https://piterapps.aquiestalatuna.es"
+
+[[d1_databases]]
+binding = "COMMENTS"
+database_name = "piter-apps-comments"
+database_id = "e76840f4-c4ab-4830-962b-a0a46424b941"
+
+[triggers]
+crons = ["*/5 * * * *"]
