@@ -1,0 +1,8 @@
+/site/downloads/
+/public/
+/qa/
+.env*
+.dev.vars*
+.wrangler/
+/PITER-MUSIC-Informe-Publicacion.md
+/comments/wrangler.toml

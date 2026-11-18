@@ -1,0 +1,17 @@
+name = "piter-apps-comments"
+main = "worker.mjs"
+compatibility_date = "2026-11-18"
+
+[observability]
+enabled = false
+
+[vars]
+PUBLIC_ORIGIN = "https://pitercillo091.github.io"
+
+[[d1_databases]]
+binding = "COMMENTS"
+database_name = "piter-apps-comments"
+database_id = "<D1_DATABASE_ID>"
+
+[triggers]
+crons = ["*/5 * * * *"]
