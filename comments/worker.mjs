@@ -42,8 +42,8 @@ export default {
         return json({ error: "fields" }, 400);
       }
       const ip = request.headers.get("CF-Connecting-IP");
-      if (!ip || !env.RATE_SECRET || !env.TURNSTILE_SECRET) return json({ error: "unavailable" }, 503);
-      const visitor = await fingerprint(env.RATE_SECRET, ip);
+      if (!ip || !env.TURNSTILE_SECRET) return json({ error: "unavailable" }, 503);
+      const visitor = await fingerprint(env.TURNSTILE_SECRET, ip);
       const now = Date.now();
       const existing = await env.COMMENTS.prepare("SELECT expires FROM limits WHERE visitor=?").bind(visitor).first();
       if (existing?.expires > now) return json({ error: "rate" }, 429);
@@ -118,6 +118,6 @@ function clean(value) {
 async function fingerprint(secret, ip) {
   const encode = (value) => new TextEncoder().encode(value);
   const key = await crypto.subtle.importKey("raw", encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
-  const signature = await crypto.subtle.sign("HMAC", key, encode(ip));
+  const signature = await crypto.subtle.sign("HMAC", key, encode(`piter-apps-rate-limit\0${ip}`));
   return Array.from(new Uint8Array(signature), (value) => value.toString(16).padStart(2, "0")).join("");
 }
