@@ -23,25 +23,24 @@ El contador usa `download_count` de GitHub Releases para cada activo. Se consult
 
 ## Comentarios
 
-**Estado actual: pendiente de activar.** La web no acepta ni almacena comentarios hasta desplegar el Worker, crear la base D1 y configurar Turnstile. Hace falta una cuenta de Cloudflare y definir `PITER_COMMENTS_ENDPOINT` y `PITER_TURNSTILE_SITEKEY` como variables de Actions. El dominio debe servir por HTTPS para habilitar el formulario. IONOS solo administra el DNS; iniciar sesión allí no configura el servicio de comentarios.
+**Estado: backend configurado; formulario pendiente de HTTPS válido en el dominio público.** El Worker `piter-apps-forum` está desplegado en Cloudflare, enlazado a D1 (`piter-apps-comments`) y protegido con Turnstile. Las variables de Actions `PITER_COMMENTS_ENDPOINT` y `PITER_TURNSTILE_SITEKEY` están configuradas y la publicación de Pages se completó correctamente. El endpoint GET del Worker responde con la lista aprobada vacía. El formulario de la web se mantiene bloqueado mientras `https://piterapps.aquiestalatuna.es` no tenga certificado válido; no se deben enviar comentarios desde HTTP.
 
-1. Crea una base de Cloudflare D1 y ejecuta `comments/schema.sql`.
-2. Copia `comments/wrangler.example.toml` a `comments/wrangler.toml`. Ajusta la ID de D1 y el origen público de GitHub Pages.
-3. Crea un widget Turnstile para el hostname de Pages. En el Worker, registra la clave secreta como `TURNSTILE_SECRET` y una cadena aleatoria con suficiente entropía como `RATE_SECRET`. Ambos valores van en los secretos de Cloudflare.
-4. Despliega `comments/worker.mjs` con el binding de D1 y conserva la tarea programada de limpieza de límites.
-5. En las variables de Actions del repositorio, añade el endpoint HTTPS completo acabado en `/comments` y la clave pública del widget. Ejecuta de nuevo el flujo de Pages.
-6. Prueba el envío en la web. Comprueba que aparece en D1 como pendiente y que es visible al aprobarlo.
+**Pendiente:** corregir la configuración DNS/TLS del subdominio y esperar/validar el certificado en GitHub Pages/Cloudflare. Después, volver a abrir el sitio por HTTPS y confirmar que el formulario y el desafío Turnstile aparecen habilitados. No hace falta recrear D1, el Worker ni las variables de Actions.
 
-D1 guarda un nombre o alias, el texto, una fecha UTC y el estado de moderación. El límite de un envío por cinco minutos usa un HMAC de la IP, sin guardar la IP en texto. Los identificadores de límite vencen a los cinco minutos y se depuran en nuevos envíos válidos y en la limpieza programada. Turnstile recibe lo necesario para verificar el desafío. Los visitantes no necesitan cuenta ni correo.
+### Privacidad y moderación
 
-La cola se administra desde la consola D1 de Cloudflare. Sustituye el ID de ejemplo por el que corresponda. El listado público muestra los últimos 50 comentarios aprobados.
+D1 conserva el alias/nombre, el texto, la fecha UTC y el estado de aprobación. Los comentarios nuevos quedan ocultos hasta su aprobación. No se conserva la IP en texto: el límite de envíos (uno cada cinco minutos) utiliza una huella HMAC temporal; la clave privada se guarda como secreto de Cloudflare. Los registros de límite caducan y se limpian mediante el cron del Worker. Turnstile verifica el desafío con Cloudflare. No se solicita correo ni se requiere registro.
+
+La moderación se hace en la consola D1 de Cloudflare, en la base `piter-apps-comments`. Para localizar pendientes, revisar el texto antes de aprobar y borrar contenido abusivo:
 
 ```sql
 SELECT id, name, message, created FROM comments WHERE approved = 0 ORDER BY id DESC;
 UPDATE comments SET approved = 1 WHERE id = 42;
 UPDATE comments SET approved = 0 WHERE id = 42;
 DELETE FROM comments WHERE id = 42;
-```
+``
+
+El listado público muestra los últimos 50 comentarios aprobados.
 
 - [GitHub Pages con un flujo personalizado](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 - [Datos de los activos de GitHub Releases](https://docs.github.com/en/rest/releases/assets)
