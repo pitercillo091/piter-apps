@@ -33,7 +33,7 @@ async function checkLinks(folder, publicDownloads = new Set()) {
         continue;
       }
       const [relative, anchor] = link.split("#");
-      const target = join(folder, relative);
+      const target = join(folder, relative.split("?")[0]);
       assert.ok((await stat(target)).isFile(), name + " -> " + link);
       if (anchor) {
         const targetMarkup = await readFile(target, "utf8");
