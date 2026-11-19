@@ -5,6 +5,7 @@
   const music = document.getElementById("background-audio");
   const toggle = document.getElementById("background-toggle");
   const demo = document.getElementById("demo-audio");
+  const localVideo = document.getElementById("tv-demo-video");
   const preferenceKey = "piter-background-music-muted";
   let enabled = true;
   let blocked = false;
@@ -21,7 +22,7 @@
   player.hidden = false;
 
   function demoPlaying() {
-    return demo && !demo.paused && !demo.ended;
+    return (demo && !demo.paused && !demo.ended) || (localVideo?.dataset.localFile === "true" && !localVideo.paused && !localVideo.muted);
   }
 
   function render() {
@@ -41,7 +42,7 @@
     try {
       await music.play();
       blocked = false;
-      if (!enabled || document.hidden || demoPlaying()) music.pause();
+      if (!enabled || document.hidden || demoPlaying() || tvToneActive) music.pause();
     } catch (error) {
       if (error.name === "NotAllowedError") blocked = true;
       else if (error.name !== "AbortError") unavailable = true;
@@ -83,6 +84,9 @@
   demo.addEventListener("play", () => music.pause());
   demo.addEventListener("pause", startMusic);
   demo.addEventListener("ended", startMusic);
+  localVideo.addEventListener("play", () => { if (localVideo.dataset.localFile === "true") music.pause(); });
+  localVideo.addEventListener("pause", startMusic);
+  localVideo.addEventListener("ended", startMusic);
   window.addEventListener("piter-tv-tone-start", () => {
     tvToneActive = true;
     music.pause();

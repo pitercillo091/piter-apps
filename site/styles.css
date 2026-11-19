@@ -75,20 +75,21 @@
 .tv-demo-copy>p:not(.kicker){color:#d0c8bb;line-height:1.6;max-width:43ch}
 .tv-demo-copy #tv-demo-status{color:#e0bd82;margin-top:18px}
 .tv-demo-wrap{min-width:0}
-.tv-set{appearance:none;width:100%;display:grid;grid-template-columns:minmax(0,1fr) clamp(64px,10vw,112px);gap:clamp(10px,2vw,22px);align-items:center;padding:clamp(13px,2.5vw,27px);border:2px solid #80603f;border-bottom-width:8px;border-radius:28px 28px 20px 20px;background:linear-gradient(140deg,#785435,#422d20 48%,#211b16);box-shadow:inset 0 1px #d8aa7150,0 20px 44px #0008;cursor:pointer;text-align:left;transition:filter .2s,transform .2s,box-shadow .2s}
-.tv-set:hover{filter:brightness(1.1);transform:translateY(-2px)}
-.tv-set:focus-visible{outline:3px solid #e9bd76;outline-offset:5px}
-.tv-screen{position:relative;display:block;aspect-ratio:4/3;min-width:0;overflow:hidden;border:clamp(8px,1.3vw,15px) solid #231f1c;border-radius:13% / 12%;background:#080a0c;box-shadow:inset 0 0 22px #000,0 0 0 2px #a58a6d}
-.tv-screen video{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.06)}
-.tv-scanlines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(transparent 0 3px,#0003 4px 5px);box-shadow:inset 0 0 38px #0008}
-.tv-screen-label{position:absolute;left:10px;bottom:8px;padding:4px 7px;border-radius:3px;background:#080a0bd9;color:#f3ead8;font:700 10px Consolas,monospace;letter-spacing:.08em}
-.tv-controls{display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2vw,20px)}
-.tv-speaker{width:100%;height:72px;max-height:14vw;border-radius:7px;background:radial-gradient(circle,#171411 1px,transparent 1.7px) 0 0/7px 7px,#49392b;box-shadow:inset 0 0 0 2px #a07850}
-.tv-knob{width:34px;height:34px;border-radius:50%;border:4px ridge #c3a47a;background:radial-gradient(circle at 35% 30%,#85745d,#2b2722 70%);box-shadow:0 2px 5px #0009}
-.tv-knob.small{width:22px;height:22px}
-.tv-brand-mark{color:#edd4a6;font:800 clamp(8px,.9vw,11px) Consolas,monospace;letter-spacing:.04em;text-align:center}
-.tv-set[aria-pressed="true"]{box-shadow:inset 0 1px #d8aa7150,0 0 0 2px #83cbc0,0 20px 44px #0008}
-.tv-caption{text-align:center;color:#c9bfad;font-size:12px;margin-top:13px}
+.tv-set{width:100%;min-width:0}
+.philips-tv-stage{position:relative;width:100%;aspect-ratio:1295/1214;isolation:isolate}
+.philips-tv-case{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.tv-demo-video{position:absolute;z-index:1;left:10.6%;top:31.5%;width:72.8%;height:56.3%;object-fit:contain;border-radius:13% / 17%;background:#050608;filter:saturate(.9) contrast(1.06)}
+.tv-scanlines{position:absolute;z-index:3;left:10.6%;top:31.5%;width:72.8%;height:56.3%;border-radius:13% / 17%;pointer-events:none;background:repeating-linear-gradient(transparent 0 3px,#0003 4px 5px);box-shadow:inset 0 0 24px #0007}
+.tv-screen-label{position:absolute;z-index:4;left:12%;bottom:14%;padding:4px 7px;border-radius:3px;background:#080a0bd9;color:#f3ead8;font:700 10px Consolas,monospace;letter-spacing:.08em;pointer-events:none}
+.tv-signal-button{position:absolute;z-index:5;right:4%;top:39%;width:8%;height:34%;border:0;background:transparent;cursor:pointer;border-radius:999px}
+.tv-signal-button:focus-visible{outline:3px solid #e9bd76;outline-offset:3px}
+.tv-signal-button[aria-pressed="true"]{box-shadow:0 0 0 3px #83cbc0,0 0 25px #83cbc099}
+.tv-caption{text-align:center;color:#c9bfad;font-size:12px;margin:0}
+.tv-file-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:20px}
+.tv-file-button,.tv-reset-button{cursor:pointer}
+.tv-file-input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap}
+.tv-file-input:focus-visible+.tv-reset-button{outline:3px solid #e9bd76}
+.tv-format-note{font-size:13px;color:#c9bfad;line-height:1.5;max-width:48ch;margin-top:12px}
 .video-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:clamp(68px,9vw,120px);border:1px solid #4b463a;border-radius:12px;overflow:hidden;background:#4b463a}
 .video-features article{padding:clamp(18px,3vw,34px);background:#211f1a}
 .video-features article>span{font:700 10px Consolas,monospace;letter-spacing:.12em;color:#d4aa72}
