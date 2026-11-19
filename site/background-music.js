@@ -33,7 +33,7 @@
   }
 
   async function startMusic() {
-    if (!enabled || unavailable || document.hidden || demoPlaying() || tvToneActive) {
+    if (!enabled || unavailable || demoPlaying() || tvToneActive) {
       music.pause();
       render();
       return;
@@ -42,7 +42,7 @@
     try {
       await music.play();
       blocked = false;
-      if (!enabled || document.hidden || demoPlaying() || tvToneActive) music.pause();
+      if (!enabled || demoPlaying() || tvToneActive) music.pause();
     } catch (error) {
       if (error.name === "NotAllowedError") blocked = true;
       else if (error.name !== "AbortError") unavailable = true;
@@ -95,7 +95,9 @@
     tvToneActive = false;
     startMusic();
   });
-  document.addEventListener("visibilitychange", startMusic);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && music.paused) startMusic();
+  });
 
   render();
   startMusic();
