@@ -9,6 +9,7 @@
   let enabled = true;
   let blocked = false;
   let unavailable = false;
+  let tvToneActive = false;
 
   try {
     enabled = localStorage.getItem(preferenceKey) !== "true";
@@ -31,7 +32,7 @@
   }
 
   async function startMusic() {
-    if (!enabled || unavailable || document.hidden || demoPlaying()) {
+    if (!enabled || unavailable || document.hidden || demoPlaying() || tvToneActive) {
       music.pause();
       render();
       return;
@@ -66,7 +67,7 @@
   });
 
   function onInteraction(event) {
-    if (event.target.closest("#background-player, #demo")) return;
+    if (event.target.closest("#background-player, #demo, #tv-signal-toggle")) return;
     if (event.type === "keydown" && !["Enter", " "].includes(event.key)) return;
     if (enabled && blocked) startMusic();
   }
@@ -82,6 +83,14 @@
   demo.addEventListener("play", () => music.pause());
   demo.addEventListener("pause", startMusic);
   demo.addEventListener("ended", startMusic);
+  window.addEventListener("piter-tv-tone-start", () => {
+    tvToneActive = true;
+    music.pause();
+  });
+  window.addEventListener("piter-tv-tone-stop", () => {
+    tvToneActive = false;
+    startMusic();
+  });
   document.addEventListener("visibilitychange", startMusic);
 
   render();
